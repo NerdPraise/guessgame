@@ -5,7 +5,28 @@
 import random
 
 
-def user_input(comp_guess, count):
+def play_game():
+    print("\t\t Welcome to Praise Guessing game")    
+    print("What level are you willing to play")
+    choose_level()
+
+def choose_level():
+    user_level = input("(E)asy\n(M)edium\n(H)ard\nOther keys to quit\n").lower()
+    if user_level == "e":
+        comp_guess = random.randint(1, 10)
+        count = 6
+    elif user_level == "m":
+        comp_guess = random.randint(1, 20)
+        count = 4
+    elif user_level == "h":
+        comp_guess = random.randint(1, 50)
+        count = 3
+    else:
+        print("Other keys, bye bye")
+        return 
+    user_guess_input(comp_guess, count)
+
+def user_guess_input(comp_guess, count):
     print(f"You have {count} guesses to work with")
     try:
         user_guess = int(input("What is your guess?\n> "))
@@ -35,28 +56,7 @@ def should_continue():
         pass
     else:
         print("Invalid key, bye bye")
+    print("Come back next time :)")
     return 0
     
-def choose_level():
-    user_level = input("(E)asy\n(M)edium\n(H)ard\nOther keys to quit\n").lower()
-    if user_level == "e":
-        comp_guess = random.randint(1, 10)
-        count = 6
-    elif user_level == "m":
-        comp_guess = random.randint(1, 20)
-        count = 4
-    elif user_level == "h":
-        comp_guess = random.randint(1, 50)
-        count = 3
-    else:
-        print("Other keys, bye bye")
-        return 
-    user_input(comp_guess, count)
-    
-
-def play_game():
-    print("\t\t Welcome to Praise Guessing game")    
-    print("What level are you willing to play")
-    choose_level()
-
 play_game()
